@@ -20,6 +20,9 @@ def home(request):
             post = Post.objects.filter(id=post_id).first()
             if post and (post.author == request.user or request.user.has_perm("main.delete_post")):
                 post.delete()
+            if post and (post.author == request.user or request.user.has_perm("main.order_post")):
+                post.order = True
+                post.save()
         elif user_id:
             user = User.objects.filter(id=user_id).first()
             if user and request.user.is_staff:

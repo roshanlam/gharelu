@@ -23,6 +23,17 @@
         </button>
       </form>
       {% endif %}
+      
+      <form method="post">
+        {% csrf_token %}
+        <button
+          type="submit"
+          class="btn btn-primary"
+          name="post-id"
+          value="{{post.id}}"
+        >
+          Order Service
+        </button>
       {% if user.is_staff %}
       <form method="post">
         {% csrf_token %}
