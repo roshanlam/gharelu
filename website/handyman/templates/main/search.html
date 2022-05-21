@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<br/>
+<form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search' %}">
+    <input class="form-control mr-sm-2" type="search" name="search">
+    <button class="btn btn btn-outline-info my-2 my-sm-0" type="submit"> Search </button>
+</form>
+
+    <h2>Jobs</h2>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Author</th>
+                <th scope="col">Location</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in all_search_results %}
+            <tr>
+                <td>{{ job.title }}</td>
+                <td>{{ job.description }}</td>
+                <td>{{ job.price }}</td>
+                <td>{{ job.author }}</td>
+                <td>{{job.location}}</td>
+            </tr>
+            
+            {%empty%}
+        
+            <h2>No results found</h2>
+            {% endfor %}
+            </tbody>
+{% endblock %}
