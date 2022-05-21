@@ -31,7 +31,9 @@ def home(request):
                     group.user_set.remove(user)
                 except:
                     pass
-
+                
+                # don't worry about the default and mod group, they are not important as of right now
+                # the plan is to have a mod group with permissions approve handyman accounts later in the future
                 try:
                     group = Group.objects.get(name='mod')
                     group.user_set.remove(user)
